@@ -101,8 +101,7 @@ def rename_files():
     backgrounds = FileManager(list_files(TEST_PATH))
     prefix = input('Enter a prefix: ')
 
-    num_files = str(len(backgrounds.files[-1]))
-    zpad = int(len(num_files))
+    zpad = len(str(len(backgrounds.files)))
 
     for count, file in enumerate(backgrounds.files, 1):
         name, ext = split_name(file)
