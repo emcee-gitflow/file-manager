@@ -101,11 +101,12 @@ def rename_files():
     backgrounds = FileManager(list_files(TEST_PATH))
     prefix = input('Enter a prefix: ')
 
+    zpad = len(str(len(backgrounds.files)))
+
     for count, file in enumerate(backgrounds.files, 1):
         name, ext = split_name(file)
         src = os.path.join(TEST_PATH, file)
-        # Add input for choice of zfill and default value based on file count.
-        dst = os.path.join(dst_dir, f'{prefix}_{str(count).zfill(4)}.{ext}')
+        dst = os.path.join(dst_dir, f'{prefix}_{str(count).zfill(zpad)}.{ext}')
         print(f"os.rename('{src}', '{dst}')" if TEST else os.rename(src, dst))
 
 
