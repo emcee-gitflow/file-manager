@@ -101,7 +101,16 @@ def rename_files():
     backgrounds = FileManager(list_files(TEST_PATH))
     prefix = input('Enter a prefix: ')
 
-    zpad = len(str(len(backgrounds.files)))
+    while True:
+        try:
+            zpad = input('Enter the number of leading zeroes: ').strip()
+            if not zpad:
+                zpad = len(str(len(backgrounds.files)))
+            else:
+                zpad = int(zpad)
+            break
+        except ValueError:
+            print('Please enter a valid whole number: ')
 
     for count, file in enumerate(backgrounds.files, 1):
         name, ext = split_name(file)
